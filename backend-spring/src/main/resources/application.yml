@@ -1,0 +1,102 @@
+spring:
+  application:
+    name: uk-news-bias
+
+  datasource:
+    url: jdbc:h2:file:./data/news_bias;AUTO_SERVER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+server:
+  port: 8000
+
+app:
+  model-path: src/main/resources/model
+  fetch-interval-minutes: 30
+  rolling-window-hours: 48
+  similarity-threshold: 0.75
+
+  outlets:
+    - name: The Guardian
+      slug: guardian
+      bias: left
+      rssUrl: https://www.theguardian.com/uk/rss
+      logoFilename: guardian.png
+
+    - name: Daily Mirror
+      slug: mirror
+      bias: left
+      rssUrl: https://www.mirror.co.uk/news/rss.xml
+      logoFilename: mirror.png
+
+    - name: The Independent
+      slug: independent
+      bias: left
+      rssUrl: https://www.independent.co.uk/news/uk/rss
+      logoFilename: independent.png
+
+    - name: New Statesman
+      slug: new_statesman
+      bias: left
+      rssUrl: https://www.newstatesman.com/feed
+      logoFilename: new_statesman.png
+
+    - name: BBC News
+      slug: bbc
+      bias: centre
+      rssUrl: http://feeds.bbci.co.uk/news/uk/rss.xml
+      logoFilename: bbc.png
+
+    - name: Reuters UK
+      slug: reuters
+      bias: centre
+      rssUrl: https://feeds.reuters.com/reuters/UKdomesticNews
+      logoFilename: reuters.png
+
+    - name: Financial Times
+      slug: ft
+      bias: centre_right
+      rssUrl: https://www.ft.com/news-feed?format=rss
+      logoFilename: ft.png
+
+    - name: Daily Mail
+      slug: daily_mail
+      bias: right
+      rssUrl: https://www.dailymail.co.uk/news/index.rss
+      logoFilename: daily_mail.png
+
+    - name: The Sun
+      slug: sun
+      bias: right
+      rssUrl: https://www.thesun.co.uk/feed/
+      logoFilename: sun.png
+
+    - name: The Times
+      slug: times
+      bias: right
+      rssUrl: https://www.thetimes.com/rss
+      logoFilename: times.png
+
+    - name: The Telegraph
+      slug: telegraph
+      bias: right
+      rssUrl: https://www.telegraph.co.uk/rss.xml
+      logoFilename: telegraph.png
+
+    - name: Daily Express
+      slug: express
+      bias: right
+      rssUrl: https://www.express.co.uk/posts/rss
+      logoFilename: express.png
